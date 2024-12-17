@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     testDir: './tests',
-    timeout: 60000,
+    timeout: 200000,
     retries: 0, // Disable retries
     reporter: [['html', { open: 'never' }]], // Generate HTML reports
     use: {

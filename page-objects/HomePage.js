@@ -7,8 +7,13 @@ class HomePage {
         this.profileUrl = process.env.PROFILE_URL || `${this.baseUrl}/portal/profile`;
         this.homeUrl = process.env.HOME_URL || `${this.baseUrl}/login`;
         
+        this.headingLocator = page.locator('h2:has-text("Mentors")');
+
 
         // Locators for main buttons
+        this.joinUsButton = page.locator('role=button[name="Join Us"]');
+        this.joinAsMentorMenuItem = page.locator('role=menuitem[name="Join as Mentor"]');
+
         this.homeBtn = page.locator('a.MuiStack-root.mui-1g1jecy');
         this.findMentorBtn = page.locator('a.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButton-colorPrimary');
         this.createAccBtn = page.locator('a.create-account-btn');
@@ -36,6 +41,18 @@ class HomePage {
         await this.findMentorBtn.click();
     }
 
+     // Assertion: Ensure the heading is visible
+     async waitForHeading() {
+        await this.headingLocator.waitFor({ state: 'visible' });
+      }
+    
+      // Get the text content of the heading
+      async getHeadingText() {
+        return await this.headingLocator.textContent();
+      }
+
+  
+
     async createNewAcc() {
         await this.createAccBtn.click();
     }
@@ -45,44 +62,44 @@ class HomePage {
     }
 
     async joinMentor() {
-        await this.becomeMentor.click();
-        await this.joinMentor.click();
+        await this.joinUsButton.click();
+        await this.joinAsMentorMenuItem.click();
     }
 
     // Footer navigation methods
     async footerBecomeMentee() {
         await this.footerBeMenteeBtn.click();
-        await this.page.waitForTimeout(7000); // Wait for 7 seconds to ensure the page loads
+        
     }
 
     async footerFindMentor() {
         await this.footerFindMentorBtn.click();
-        await this.page.waitForTimeout(7000); // Wait for 7 seconds to ensure the page loads
+        
     }
 
     async footerBecomeMentor() {
         await this.footerBeMentorBtn.click();
-        await this.page.waitForTimeout(7000); // Wait for 7 seconds to ensure the page loads
+       
     }
 
     async footerAboutUs() {
         await this.footerAboutBtn.click();
-        await this.page.waitForTimeout(7000); // Wait for 7 seconds to ensure the page loads
+        
     }
 
     async footerPrivacy() {
         await this.footerPrivacyBtn.click();
-        await this.page.waitForTimeout(7000); // Wait for 7 seconds to ensure the page loads
+    
     }
 
     async footerTerms() {
         await this.footerTermsBtn.click();
-        await this.page.waitForTimeout(7000); // Wait for 7 seconds to ensure the page loads
+       
     }
 
     async footerLinkedIn() {
         await this.footerLinkedinBtn.click();
-        await this.page.waitForTimeout(7000); // Wait for 7 seconds to ensure the page loads
+       
     }
 }
 

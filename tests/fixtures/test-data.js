@@ -13,4 +13,5 @@ module.exports = {
         baseUrl: process.env.BASE_URL,
         portalUrl: process.env.PORTAL_URL,
     },
+    mentorsHeaderText: process.env.MENTORS_HEADER_TEXT,
 };
