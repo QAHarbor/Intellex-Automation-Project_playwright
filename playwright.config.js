@@ -11,7 +11,12 @@ module.exports = {
         viewport: { width: 1280, height: 720 },
     },
   
- 
+    // Add this section to specify test file patterns
+    testMatch: [
+        '**/*.spec.js', // Include all spec files
+        '**/*.test.js'   // Include all test files (if you use .test.js as well)
+    ],
+
     resolve: {
         alias: {
             '@page-objects': path.resolve(__dirname, './page-objects'),
