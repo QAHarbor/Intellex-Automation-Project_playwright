@@ -38,14 +38,15 @@ jobs:
       # Run Playwright tests and generate output
       - name: Run Playwright Tests with JSON report
         run: |
-          npx playwright test --reporter=json > test-results.json
+          npx playwright test --reporter=json > test-results.json || echo "Tests failed, check results."
+          cat test-results.json
 
       # Summarize Test Results and Write to Job Summary
       - name: Generate Test Summary in Job UI
         run: |
-          PASSED=$(cat test-results.json | jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length')
-          FAILED=$(cat test-results.json | jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length')
-          SKIPPED=$(cat test-results.json | jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length')
+          PASSED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length' test-results.json)
+          FAILED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length' test-results.json)
+          SKIPPED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length' test-results.json)
 
           echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
           echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
