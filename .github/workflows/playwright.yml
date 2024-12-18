@@ -19,13 +19,13 @@ jobs:
       - name: Set Up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Adjust based on your local development version
+          node-version: '20'
 
       - name: Install Dependencies
-        run: npm ci  # Use ci for a clean install
+        run: npm ci
 
       - name: Install Playwright Browsers
-        run: npx playwright install  # Removed --with-deps
+        run: npx playwright install
 
       - name: List Tests Directory
         run: ls -R tests
@@ -36,9 +36,10 @@ jobs:
       - name: Generate Test Summary in Job UI
         run: |
           if [[ -f test-results.json ]]; then
-            PASSED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length' test-results.json)
-            FAILED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length' test-results.json)
-            SKIPPED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length' test-results.json)
+            echo "Processing test results..."
+            PASSED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length' test-results.json || echo "0")
+            FAILED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length' test-results.json || echo "0")
+            SKIPPED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length' test-results.json || echo "0")
 
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
@@ -47,5 +48,6 @@ jobs:
             echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
             echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY
           else
-            echo "No test results file found."
+            echo "Warning: No test results file found."
+            exit 0  # Exit successfully if no results file
           fi
