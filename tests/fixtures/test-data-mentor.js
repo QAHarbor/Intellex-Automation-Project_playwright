@@ -8,7 +8,7 @@ module.exports = {
         password: process.env.VALID_MENTOR_PASSWORD,
         jobTitle: 'Software Engineer',
         company: 'QA Techno',
-        linkedIn: 'https://www.linkedin.com/in/mentor'
+        linkedIn: 'https://www.linkedin.com/in/mentor',
     },
     invalidMentorDetails: {
         firstName: '',

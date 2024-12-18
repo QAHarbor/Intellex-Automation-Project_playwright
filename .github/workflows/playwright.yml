@@ -1,0 +1,55 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js (use Node.js 20 LTS)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Fix Binary Permissions
+      - name: Fix Binary Permissions
+        run: chmod +x node_modules/.bin/*
+
+      # Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # Run Playwright tests and generate output
+      - name: Run Playwright Tests with JSON report
+        run: |
+          npx playwright test --reporter=json > test-results.json
+
+      # Summarize Test Results and Write to Job Summary
+      - name: Generate Test Summary in Job UI
+        run: |
+          PASSED=$(cat test-results.json | jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length')
+          FAILED=$(cat test-results.json | jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length')
+          SKIPPED=$(cat test-results.json | jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length')
+
+          echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
+          echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| ✅ Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
+          echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
+          echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY

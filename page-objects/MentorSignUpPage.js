@@ -12,9 +12,12 @@ class MentorSignUpPage {
         this.agreeButton = page.locator("(//span[@class='MuiTouchRipple-root mui-w0pj6f'])[4]");
         this.industryInput = page.locator('input[placeholder="Select industries"]');
         this.industryOption = page.locator('(//li[text()="Accounting"])[1]');
+
         this.skillsInput = page.locator('input[placeholder="Select skills"]');
-        this.cheekIteam  = page.getByLabel('controlled');
-        this.skillCheckbox = page.locator("li[id=':rp:-option-0'] input[type='checkbox']");
+        
+        // Use aria-label for selecting the checkbox
+        this.skillCheckbox = page.locator('input[aria-label="controlled"]');  // Updated to use aria-label
+
         this.jobTitleInput = page.locator('input[placeholder="Enter your job title"]');
         this.companyInput = page.locator('input[placeholder="Enter your company"]');
         this.linkedInInput = page.locator('input[placeholder="Enter your Linkedin URL"]');
@@ -38,10 +41,12 @@ class MentorSignUpPage {
         await this.industryInput.click();
         await this.industryOption.click();
         await this.skillsInput.click();
-       await this.cheekIteam.click();
-       //ait this.locator('.content-center').click();
 
-        await this.skillCheckbox.check();
+        // Ensure the checkbox is checked using the correct selector
+        await this.skillCheckbox.check();  // This checks the checkbox
+        // You can also check if the checkbox is checked for debugging
+        console.log(await this.skillCheckbox.isChecked()); // Should return true if checked
+        
         await this.jobTitleInput.fill(jobTitle);
         await this.companyInput.fill(company);
         await this.linkedInInput.fill(linkedIn);

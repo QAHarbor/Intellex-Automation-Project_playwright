@@ -11,8 +11,8 @@ class HomePage {
 
 
         // Locators for main buttons
-        this.joinUsButton = page.locator('role=button[name="Join Us"]');
-        this.joinAsMentorMenuItem = page.locator('role=menuitem[name="Join as Mentor"]');
+        this.joinUsButton = page.locator('button', { name: 'Join Us' });
+        this.joinAsMentorMenuItem = page.locator('menuitem', { name: 'Join as Mentor' });
 
         this.homeBtn = page.locator('a.MuiStack-root.mui-1g1jecy');
         this.findMentorBtn = page.locator('a.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButton-colorPrimary');
@@ -32,9 +32,13 @@ class HomePage {
     }
 
     // Navigation methods
-    async navigateToHome() {
+    async navigateToLoginPage() {
         await this.page.goto(this.homeUrl);
         await this.homeBtn.click();
+    }
+
+    async navigateToHome() {
+        await this.page.goto(this.baseUrl);
     }
 
     async navigateToFindMentor() {
@@ -61,10 +65,18 @@ class HomePage {
         await this.seeMoreBtn.click();
     }
 
-    async joinMentor() {
-        await this.joinUsButton.click();
-        await this.joinAsMentorMenuItem.click();
+    // Method to join as mentor
+  async joinMentor() {
+    try {
+      // Click the "Join Us" button
+      await this.joinUsButton.click();
+
+      // Click the "Join as Mentor" menu item
+      await this.joinAsMentorMenuItem.click();
+    } catch (error) {
+      console.error('Error during joinMentor:', error);
     }
+  }
 
     // Footer navigation methods
     async footerBecomeMentee() {

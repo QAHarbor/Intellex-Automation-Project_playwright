@@ -22,7 +22,7 @@ test.describe('Home Page Navigation Tests', () => {
     test('Successful Navigation to Find Mentor Page', async ({ page }) => {
         const homePage = new Home(page);
         // Navigate to home and then to the Find Mentor page
-        await homePage.navigateToHome();
+        await homePage.navigateToLoginPage();
         await homePage.navigateToFindMentor();
 
 
@@ -57,7 +57,7 @@ test.describe('Home Page Navigation Tests', () => {
         const homePage = new Home(page);
 
         // Navigate to home and then to the Mentee Create Account page
-        await homePage.navigateToHome();
+        await homePage.navigateToLoginPage();
         await homePage.createNewAcc();
 
        
@@ -71,7 +71,7 @@ test.describe('Home Page Navigation Tests', () => {
         const homePage = new Home(page);
 
         // Navigate to home and then discover mentors
-        await homePage.navigateToHome();
+        await homePage.navigateToLoginPage();
         await homePage.discoverMentor();
 
         
