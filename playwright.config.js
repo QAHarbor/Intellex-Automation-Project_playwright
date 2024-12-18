@@ -7,7 +7,7 @@ module.exports = {
     reporter: [['html', { open: 'never' }]], // Generate HTML reports
     use: {
         baseURL: process.env.BASE_URL,
-        headless: false, // Change headless to false (run with browser visible)
+      //  headless: false, // Change headless to false (run with browser visible)
         viewport: { width: 1280, height: 720 },
     },
   
