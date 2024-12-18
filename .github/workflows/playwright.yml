@@ -13,49 +13,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Node.js (use Node.js 20 LTS)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Fix Binary Permissions
-      - name: Fix Binary Permissions
-        run: chmod +x node_modules/.bin/*
-
-      # Install Playwright Browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # List Tests Directory for Debugging
+      # List the contents of the tests directory for debugging
       - name: List Tests Directory
-        run: |
-          ls -R tests
+        run: ls -R tests
 
-      # Run Playwright tests and generate output
-      - name: Run Playwright Tests with JSON report
-        run: |
-          npx playwright test "tests/**/*.spec.js" --reporter=json > test-results.json || echo "Tests failed, check results."
-          cat test-results.json
+      # Run Playwright tests
+      - name: Run Playwright Tests
+        run: npx playwright test --reporter=html
 
       # Summarize Test Results and Write to Job Summary
       - name: Generate Test Summary in Job UI
         run: |
-          PASSED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length' test-results.json)
-          FAILED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length' test-results.json)
-          SKIPPED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length' test-results.json)
+          if [[ -f test-results.json ]]; then
+            PASSED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length' test-results.json)
+            FAILED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length' test-results.json)
+            SKIPPED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length' test-results.json)
 
-          echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
-          echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
-          echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| ✅ Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
-          echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
-          echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY
+            echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
+            echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
+            echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
+            echo "| ✅ Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
+            echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
+            echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "No test results file found."
+          fi
