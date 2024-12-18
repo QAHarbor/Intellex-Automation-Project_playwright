@@ -38,7 +38,7 @@ jobs:
       # Run Playwright tests and generate output
       - name: Run Playwright Tests with JSON report
         run: |
-          npx playwright test --reporter=json '**/*.spec.ts' > test-results.json || echo "Tests failed, check results."
+          npx playwright test tests/**/*.spec.ts --reporter=json > test-results.json || echo "Tests failed, check results."
           cat test-results.json
 
       # Summarize Test Results and Write to Job Summary
