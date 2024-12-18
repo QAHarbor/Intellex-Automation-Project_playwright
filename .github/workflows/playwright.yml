@@ -13,29 +13,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Set Up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '20'  # Adjust based on your local development version
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Dependencies
+        run: npm ci  # Use ci for a clean install
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install  # Removed --with-deps
 
-      # List the contents of the tests directory for debugging
       - name: List Tests Directory
         run: ls -R tests
 
-      # Run Playwright tests
       - name: Run Playwright Tests
         run: npx playwright test --reporter=html
 
-      # Summarize Test Results and Write to Job Summary
       - name: Generate Test Summary in Job UI
         run: |
           if [[ -f test-results.json ]]; then
