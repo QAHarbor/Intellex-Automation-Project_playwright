@@ -1,4 +1,4 @@
-name: Playwright Tests with Detailed Test Case List
+name: Playwright Tests with Test Details
 
 on:
   push:
@@ -40,29 +40,19 @@ jobs:
         run: npx playwright test
         continue-on-error: true
 
-      # Step 7: Check test-results.json
-      - name: Check test-results.json
-        run: |
-          if [[ -f test-results.json ]]; then
-            echo "test-results.json exists:"
-            cat test-results.json
-          else
-            echo "test-results.json not found!"
-            exit 1
-          fi
-
-      # Step 8: Generate test summary
+      # Step 7: Generate test summary with detailed lists
       - name: Generate test summary
         run: |
           if [[ -f test-results.json ]]; then
+            # Extract counts
             PASSED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed")] | length' test-results.json || echo "0")
             FAILED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
             SKIPPED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
 
-            # Extract test case titles
-            PASSED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed") | .title] | join("\n")' test-results.json || echo "No passed tests")
-            FAILED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed") | .title] | join("\n")' test-results.json || echo "No failed tests")
-            SKIPPED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped") | .title] | join("\n")' test-results.json || echo "No skipped tests")
+            # Extract test titles
+            PASSED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[] | select(.results[].status == "passed") | .title] | join("\n")' test-results.json || echo "No passed tests")
+            FAILED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[] | select(.results[].status == "failed") | .title] | join("\n")' test-results.json || echo "No failed tests")
+            SKIPPED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[] | select(.results[].status == "skipped") | .title] | join("\n")' test-results.json || echo "No skipped tests")
 
             # Write summary to GitHub Actions step summary
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
@@ -86,14 +76,14 @@ jobs:
             exit 1
           fi
 
-      # Step 9: Upload test-results.json as an artifact
+      # Step 8: Upload test-results.json as an artifact
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: test-results.json
 
-      # Step 10: Fail workflow if tests failed
+      # Step 9: Fail workflow if tests failed
       - name: Fail workflow if tests failed
         if: failure()
         run: exit 1
