@@ -51,19 +51,34 @@ jobs:
             exit 1
           fi
 
-      # Step 8: Generate test summary
+      # Step 8: Generate test summary with detailed test lists
       - name: Generate test summary
         run: |
           if [[ -f test-results.json ]]; then
             PASSED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed")] | length' test-results.json || echo "0")
             FAILED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
             SKIPPED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
+            
+            # Extract detailed lists of test cases
+            PASSED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed") | .title] | .[]' test-results.json || echo "None")
+            FAILED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed") | .title] | .[]' test-results.json || echo "None")
+            SKIPPED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped") | .title] | .[]' test-results.json || echo "None")
+            
+            # Add summary to GitHub Actions summary
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
             echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
             echo "| ✅ Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
             echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
             echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY
+            
+            # Append detailed test case lists
+            echo "### ✅ Passed Tests" >> $GITHUB_STEP_SUMMARY
+            echo "$PASSED_LIST" >> $GITHUB_STEP_SUMMARY
+            echo "### ❌ Failed Tests" >> $GITHUB_STEP_SUMMARY
+            echo "$FAILED_LIST" >> $GITHUB_STEP_SUMMARY
+            echo "### ⏭ Skipped Tests" >> $GITHUB_STEP_SUMMARY
+            echo "$SKIPPED_LIST" >> $GITHUB_STEP_SUMMARY
           else
             echo "test-results.json not found!"
             exit 1
