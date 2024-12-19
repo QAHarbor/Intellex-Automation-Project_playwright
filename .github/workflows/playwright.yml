@@ -1,4 +1,4 @@
-name: Playwright Tests with Test Case Details
+name: Playwright Tests with Detailed Test Case List
 
 on:
   push:
@@ -51,7 +51,7 @@ jobs:
             exit 1
           fi
 
-      # Step 8: Generate test summary with detailed test cases
+      # Step 8: Generate test summary
       - name: Generate test summary
         run: |
           if [[ -f test-results.json ]]; then
@@ -59,11 +59,12 @@ jobs:
             FAILED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
             SKIPPED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
 
-            # Extract titles for passed, failed, and skipped tests
-            PASSED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed") | .title] | join("\n")' test-results.json || echo "None")
-            FAILED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed") | .title] | join("\n")' test-results.json || echo "None")
-            SKIPPED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped") | .title] | join("\n")' test-results.json || echo "None")
+            # Extract test case titles
+            PASSED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed") | .title] | join("\n")' test-results.json || echo "No passed tests")
+            FAILED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed") | .title] | join("\n")' test-results.json || echo "No failed tests")
+            SKIPPED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped") | .title] | join("\n")' test-results.json || echo "No skipped tests")
 
+            # Write summary to GitHub Actions step summary
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
             echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
@@ -71,6 +72,7 @@ jobs:
             echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
             echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY
 
+            # Display lists of tests
             echo "### ✅ Passed Tests" >> $GITHUB_STEP_SUMMARY
             echo "$PASSED_LIST" >> $GITHUB_STEP_SUMMARY
 
