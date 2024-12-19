@@ -6,15 +6,15 @@ module.exports = {
     retries: 0, // Disable retries
     reporter: [['html', { open: 'never' }]], // Generate HTML reports
     use: {
-        baseURL: process.env.BASE_URL,
-      //  headless: false, // Change headless to false (run with browser visible)
+        baseURL: process.env.BASE_URL, // Ensure BASE_URL is set
+        headless: true, // Set this to false if you want to view the browser during local testing
         viewport: { width: 1280, height: 720 },
     },
   
-    // Add this section to specify test file patterns
+    // Pattern for including test files
     testMatch: [
         '**/*.spec.js', // Include all spec files
-        '**/*.test.js'   // Include all test files (if you use .test.js as well)
+        '**/*.test.js'   // Include all test files
     ],
 
     resolve: {
