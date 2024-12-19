@@ -1,0 +1,690 @@
+{
+  "config": {
+    "configFile": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\playwright.config.js",
+    "rootDir": "C:/Drive/Playwright/GithubProject/intellex-academic-core-Automaiton/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Drive/Playwright/GithubProject/intellex-academic-core-Automaiton/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "",
+        "name": "",
+        "testDir": "C:/Drive/Playwright/GithubProject/intellex-academic-core-Automaiton/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.js",
+          "**/*.test.js"
+        ],
+        "timeout": 200000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.49.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth\\mentee_auth.spec.js",
+      "file": "auth/mentee_auth.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Mentee Login Tests",
+          "file": "auth/mentee_auth.spec.js",
+          "line": 10,
+          "column": 15,
+          "specs": [
+            {
+              "title": "should log in successfully with valid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 19960,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-19T06:54:54.853Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ea8bd4394f3d5fcfe118-d05abe25ba568e7fa807",
+              "file": "auth/mentee_auth.spec.js",
+              "line": 19,
+              "column": 18
+            },
+            {
+              "title": "should fail to log in with invalid credentials",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "interrupted",
+                      "duration": 12049,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Incorrect email or password')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Incorrect email or password')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Incorrect email or password')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Incorrect email or password')\u001b[22m\n\n    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js:37:30",
+                        "matcherResult": {
+                          "message": "\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Incorrect email or password')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Incorrect email or password')\u001b[22m\n",
+                          "pass": false,
+                          "actual": "hidden",
+                          "name": "toBeVisible",
+                          "expected": "visible",
+                          "log": [
+                            "  - expect.toBeVisible with timeout 5000ms",
+                            "  - waiting for locator('text=Incorrect email or password')"
+                          ]
+                        },
+                        "location": {
+                          "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js",
+                          "column": 30,
+                          "line": 37
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 35 |\u001b[39m     \u001b[90m// Assert that the error message \"Incorrect email or password\" is visible on the page\u001b[39m\n \u001b[90m 36 |\u001b[39m   \u001b[36mconst\u001b[39m errorMessage \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Incorrect email or password'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m   \u001b[36mawait\u001b[39m expect(errorMessage)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m     \n \u001b[90m 40 |\u001b[39m     })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js",
+                            "column": 30,
+                            "line": 37
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Incorrect email or password')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Incorrect email or password')\u001b[22m\n\n\n\u001b[0m \u001b[90m 35 |\u001b[39m     \u001b[90m// Assert that the error message \"Incorrect email or password\" is visible on the page\u001b[39m\n \u001b[90m 36 |\u001b[39m   \u001b[36mconst\u001b[39m errorMessage \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Incorrect email or password'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m   \u001b[36mawait\u001b[39m expect(errorMessage)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m     \n \u001b[90m 40 |\u001b[39m     })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js:37:30\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-19T06:55:15.987Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js",
+                        "column": 30,
+                        "line": 37
+                      }
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ea8bd4394f3d5fcfe118-5b1b7217886cf0e88913",
+              "file": "auth/mentee_auth.spec.js",
+              "line": 36,
+              "column": 18
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "auth\\mentor_auth.spec.js",
+      "file": "auth/mentor_auth.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Mentor SignUp Tests",
+          "file": "auth/mentor_auth.spec.js",
+          "line": 11,
+          "column": 114,
+          "specs": [
+            {
+              "title": "should sign up mentor successfully with valid credentials and handle duplicate email",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "status": "passed",
+                      "duration": 21246,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "\u001b[33mtrue\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "Unexpected result: Neither success nor error message is displayed.\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2024-12-19T06:54:54.937Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "61e955e431be7c8c864d-7b453eb2b6c1bb20cdbe",
+              "file": "auth/mentor_auth.spec.js",
+              "line": 20,
+              "column": 18
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "home\\HomePage.spec.js",
+      "file": "home/HomePage.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Home Page Navigation Tests",
+          "file": "home/HomePage.spec.js",
+          "line": 10,
+          "column": 15,
+          "specs": [
+            {
+              "title": "Successful Navigation to Join as Mentor Page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "status": "failed",
+                      "duration": 5478,
+                      "error": {
+                        "message": "TypeError: homePage.joinMentor is not a function",
+                        "stack": "TypeError: homePage.joinMentor is not a function\n    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js:14:24",
+                        "location": {
+                          "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js",
+                          "column": 24,
+                          "line": 14
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 12 |\u001b[39m         \u001b[90m// Navigate to home and then to the Join as Mentor page\u001b[39m\n \u001b[90m 13 |\u001b[39m         \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mnavigateToHome()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 |\u001b[39m         \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mjoinMentor()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 15 |\u001b[39m       \n \u001b[90m 16 |\u001b[39m       \u001b[90m//  await expect(page).toHaveURL('https://intellex-academic-core.vercel.app/register/?type=mentor');\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js",
+                            "column": 24,
+                            "line": 14
+                          },
+                          "message": "TypeError: homePage.joinMentor is not a function\n\n\u001b[0m \u001b[90m 12 |\u001b[39m         \u001b[90m// Navigate to home and then to the Join as Mentor page\u001b[39m\n \u001b[90m 13 |\u001b[39m         \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mnavigateToHome()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 |\u001b[39m         \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mjoinMentor()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 15 |\u001b[39m       \n \u001b[90m 16 |\u001b[39m       \u001b[90m//  await expect(page).toHaveURL('https://intellex-academic-core.vercel.app/register/?type=mentor');\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[0m\n\u001b[2m    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js:14:24\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-19T06:54:54.929Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js",
+                        "column": 24,
+                        "line": 14
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a02391dad5b2ae76e406-06ddb713a65e3ebe0584",
+              "file": "home/HomePage.spec.js",
+              "line": 12,
+              "column": 18
+            },
+            {
+              "title": "Successful Navigation to Find Mentor Page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 16441,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Heading Text: Mentors\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-19T06:55:05.540Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a02391dad5b2ae76e406-66601a13622fbea83718",
+              "file": "home/HomePage.spec.js",
+              "line": 24,
+              "column": 9
+            },
+            {
+              "title": "Successful Navigation to Home Page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "passed",
+                      "duration": 2384,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Successfully navigated to Home page.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-19T06:55:22.399Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a02391dad5b2ae76e406-1a1bf411fcf65c34c3f1",
+              "file": "home/HomePage.spec.js",
+              "line": 42,
+              "column": 18
+            },
+            {
+              "title": "Successful Navigation to Mentee Create Account Page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "failed",
+                      "duration": 3119,
+                      "error": {
+                        "message": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('a.create-account-btn')\u001b[22m\n",
+                        "stack": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('a.create-account-btn')\u001b[22m\n\n    at HomePage.createNewAcc (C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js:61:33)\n    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js:61:24",
+                        "location": {
+                          "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js",
+                          "column": 33,
+                          "line": 61
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\page-objects\\HomePage.js:61\n\n\u001b[0m \u001b[90m 59 |\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36masync\u001b[39m createNewAcc() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcreateAccBtn\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m     }\n \u001b[90m 63 |\u001b[39m\n \u001b[90m 64 |\u001b[39m     \u001b[36masync\u001b[39m discoverMentor() {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js",
+                            "column": 33,
+                            "line": 61
+                          },
+                          "message": "Error: locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('a.create-account-btn')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\HomePage.js:61\n\n\u001b[0m \u001b[90m 59 |\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36masync\u001b[39m createNewAcc() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcreateAccBtn\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m     }\n \u001b[90m 63 |\u001b[39m\n \u001b[90m 64 |\u001b[39m     \u001b[36masync\u001b[39m discoverMentor() {\u001b[0m\n\u001b[2m    at HomePage.createNewAcc (C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js:61:33)\u001b[22m\n\u001b[2m    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js:61:24\u001b[22m"
+                        },
+                        {
+                          "message": "Error: Target page, context or browser has been closed"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-19T06:55:24.802Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js",
+                        "column": 33,
+                        "line": 61
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a02391dad5b2ae76e406-95c1bef67634889cd6f0",
+              "file": "home/HomePage.spec.js",
+              "line": 52,
+              "column": 18
+            },
+            {
+              "title": "Successful Navigation to Mentor Filter Page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a02391dad5b2ae76e406-1fae7193976772f15668",
+              "file": "home/HomePage.spec.js",
+              "line": 65,
+              "column": 18
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "mentee\\mentorFilters.spec.js",
+      "file": "mentee/mentorFilters.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Mentor Filters and Tab Navigation Tests",
+          "file": "mentee/mentorFilters.spec.js",
+          "line": 13,
+          "column": 3,
+          "specs": [
+            {
+              "title": "Successfully applies checkbox filters and verifies selection",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "status": "failed",
+                      "duration": 31211,
+                      "error": {
+                        "message": "Error: locator.check: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('label:has-text(\"Interview Preparation\")')\u001b[22m\n\u001b[2m    - waiting for\" https://intellex-academic-core.vercel.app/mentors/?minPrice=0&maxPrice=1000\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://intellex-academic-core.vercel.app/mentors/?minPrice=0&maxPrice=1000\"\u001b[22m\n",
+                        "stack": "Error: locator.check: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('label:has-text(\"Interview Preparation\")')\u001b[22m\n\u001b[2m    - waiting for\" https://intellex-academic-core.vercel.app/mentors/?minPrice=0&maxPrice=1000\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://intellex-academic-core.vercel.app/mentors/?minPrice=0&maxPrice=1000\"\u001b[22m\n\n    at MentorFiltersPage.checkInterviewPreparation (C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\MentorFilters.page.js:23:45)\n    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\mentee\\mentorFilters.spec.js:44:29",
+                        "location": {
+                          "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\MentorFilters.page.js",
+                          "column": 45,
+                          "line": 23
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\page-objects\\MentorFilters.page.js:23\n\n\u001b[0m \u001b[90m 21 |\u001b[39m   \u001b[90m// Select 'Interview Preparation' checkbox\u001b[39m\n \u001b[90m 22 |\u001b[39m   \u001b[36masync\u001b[39m checkInterviewPreparation() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39minterviewPreparationCheckbox\u001b[33m.\u001b[39mcheck()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   \u001b[90m// Select 'Networking' checkbox\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\MentorFilters.page.js",
+                            "column": 45,
+                            "line": 23
+                          },
+                          "message": "Error: locator.check: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('label:has-text(\"Interview Preparation\")')\u001b[22m\n\u001b[2m    - waiting for\" https://intellex-academic-core.vercel.app/mentors/?minPrice=0&maxPrice=1000\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://intellex-academic-core.vercel.app/mentors/?minPrice=0&maxPrice=1000\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\MentorFilters.page.js:23\n\n\u001b[0m \u001b[90m 21 |\u001b[39m   \u001b[90m// Select 'Interview Preparation' checkbox\u001b[39m\n \u001b[90m 22 |\u001b[39m   \u001b[36masync\u001b[39m checkInterviewPreparation() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39minterviewPreparationCheckbox\u001b[33m.\u001b[39mcheck()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m\n \u001b[90m 26 |\u001b[39m   \u001b[90m// Select 'Networking' checkbox\u001b[39m\u001b[0m\n\u001b[2m    at MentorFiltersPage.checkInterviewPreparation (C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\MentorFilters.page.js:23:45)\u001b[22m\n\u001b[2m    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\mentee\\mentorFilters.spec.js:44:29\u001b[22m"
+                        },
+                        {
+                          "message": "Error: Target page, context or browser has been closed"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "tasnivasumibd@gmail.com\n"
+                        },
+                        {
+                          "text": "Testdata@123\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-19T06:54:54.871Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\MentorFilters.page.js",
+                        "column": 45,
+                        "line": 23
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "cbd4a3fe8fae798f021e-fcf14629e274e6f9944d",
+              "file": "mentee/mentorFilters.spec.js",
+              "line": 38,
+              "column": 6
+            },
+            {
+              "title": "Switches tabs and verifies the active tab",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "cbd4a3fe8fae798f021e-84f5cefd176967f672c3",
+              "file": "mentee/mentorFilters.spec.js",
+              "line": 61,
+              "column": 17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "mentee\\profile.spec.js",
+      "file": "mentee/profile.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Mentee Profile Tests",
+          "file": "mentee/profile.spec.js",
+          "line": 13,
+          "column": 5,
+          "specs": [
+            {
+              "title": "Mentee Successfully Updates Personal Details",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "status": "interrupted",
+                      "duration": 3897,
+                      "error": {
+                        "message": "Error: locator.fill: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Enter your email')\u001b[22m\n",
+                        "stack": "Error: locator.fill: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Enter your email')\u001b[22m\n\n    at AuthPage.login (C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js:16:31)\n    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\mentee\\profile.spec.js:20:24",
+                        "location": {
+                          "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                          "column": 31,
+                          "line": 16
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\page-objects\\AuthPage.js:16\n\n\u001b[0m \u001b[90m 14 |\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36masync\u001b[39m login(email\u001b[33m,\u001b[39m password) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memailInput\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpasswordInput\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mloginButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m     }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                            "column": 31,
+                            "line": 16
+                          },
+                          "message": "Error: locator.fill: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Enter your email')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\AuthPage.js:16\n\n\u001b[0m \u001b[90m 14 |\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36masync\u001b[39m login(email\u001b[33m,\u001b[39m password) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memailInput\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpasswordInput\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mloginButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m     }\u001b[0m\n\u001b[2m    at AuthPage.login (C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js:16:31)\u001b[22m\n\u001b[2m    at C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\tests\\mentee\\profile.spec.js:20:24\u001b[22m"
+                        },
+                        {
+                          "message": "Error: Target page, context or browser has been closed"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "https://intellex-academic-core.vercel.app/portal/profile/\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-19T06:55:23.911Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "C:\\Drive\\Playwright\\GithubProject\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                        "column": 31,
+                        "line": 16
+                      }
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ff9a3809ac12c2beb3eb-66333e06c7a7f76e650a",
+              "file": "mentee/profile.spec.js",
+              "line": 29,
+              "column": 15
+            },
+            {
+              "title": "Mentee Successfully Updates Their Bio",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ff9a3809ac12c2beb3eb-a1bb389be41316822bbc",
+              "file": "mentee/profile.spec.js",
+              "line": 48,
+              "column": 21
+            },
+            {
+              "title": "Mentee Successfully Views Their Bio",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 200000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ff9a3809ac12c2beb3eb-89633ce356f41acd9508",
+              "file": "mentee/profile.spec.js",
+              "line": 59,
+              "column": 21
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2024-12-19T06:54:52.261Z",
+    "duration": 36580.508,
+    "expected": 4,
+    "skipped": 6,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}
