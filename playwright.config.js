@@ -8,7 +8,7 @@ require('@babel/register')({
     retries: 0,
     reporter: [
       ['html', { open: 'never' }],
-      ['json', { outputFile: 'test-results.json' }]
+      ['json', { outputFile: 'test-results.json' }] // Generate JSON report
     ],
     use: {
       baseURL: process.env.BASE_URL,
