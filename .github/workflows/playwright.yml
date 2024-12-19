@@ -72,4 +72,11 @@ jobs:
       # Step 9: Upload test-results.json as an artifact
       - name: Upload test results
         uses: actions/upload-artifact@v3
-        with
+        with:
+          name: test-results
+          path: test-results.json
+
+      # Step 10: Fail workflow if tests failed
+      - name: Fail workflow if tests failed
+        if: failure()
+        run: exit 1
