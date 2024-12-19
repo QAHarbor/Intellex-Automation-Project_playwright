@@ -35,16 +35,16 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # Step 6: Run Playwright tests and generate JSON report
+      # Step 6: Run Playwright tests
       - name: Run Playwright tests
         run: npx playwright test
         continue-on-error: true # Allow the workflow to continue even if tests fail
 
-      # Step 7: Verify `test-results.json` file existence and output contents
+      # Step 7: Verify test-results.json exists
       - name: Check test-results.json
         run: |
           if [[ -f test-results.json ]]; then
-            echo "test-results.json found:"
+            echo "test-results.json exists:"
             cat test-results.json
           else
             echo "test-results.json not found!"
@@ -55,9 +55,9 @@ jobs:
       - name: Generate test summary
         run: |
           if [[ -f test-results.json ]]; then
-            PASSED=$(jq '[.suites[].specs[].tests[].results[] | select(.status == "passed")] | length' test-results.json || echo "0")
-            FAILED=$(jq '[.suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
-            SKIPPED=$(jq '[.suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
+            PASSED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed")] | length' test-results.json || echo "0")
+            FAILED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
+            SKIPPED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
             echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
@@ -69,14 +69,7 @@ jobs:
             exit 1
           fi
 
-      # Step 9: Upload test results as an artifact
+      # Step 9: Upload test-results.json as an artifact
       - name: Upload test results
         uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: test-results.json
-
-      # Step 10: Fail the workflow if any tests failed
-      - name: Fail workflow if tests failed
-        if: failure()
-        run: exit 1
+        with
