@@ -13,56 +13,47 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Fix binary permissions
       - name: Fix binary permissions
         run: chmod +x node_modules/.bin/*
 
-      # Step 5: Install Playwright browsers
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # Step 6: Run Playwright tests
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --reporter=json
         continue-on-error: true
 
-      # Step 7: Generate test summary with detailed lists
       - name: Generate test summary
         run: |
           if [[ -f test-results.json ]]; then
-            # Extract counts
-            PASSED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed")] | length' test-results.json || echo "0")
-            FAILED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
-            SKIPPED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
+            PASSED=$(jq '[.suites[].specs[].tests[] | select(.results[].status == "passed")] | length' test-results.json || echo "0")
+            FAILED=$(jq '[.suites[].specs[].tests[] | select(.results[].status == "failed")] | length' test-results.json || echo "0")
+            SKIPPED=$(jq '[.suites[].specs[].tests[] | select(.results[].status == "skipped")] | length' test-results.json || echo "0")
 
-            # Extract test titles
-            PASSED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[] | select(.results[].status == "passed") | .title] | join("\n")' test-results.json || echo "No passed tests")
-            FAILED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[] | select(.results[].status == "failed") | .title] | join("\n")' test-results.json || echo "No failed tests")
-            SKIPPED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[] | select(.results[].status == "skipped") | .title] | join("\n")' test-results.json || echo "No skipped tests")
+            PASSED_LIST=$(jq -r '[.suites[].specs[].tests[] | select(.results[].status == "passed") | .title] | join("\n")' test-results.json || echo "No passed tests")
+            FAILED_LIST=$(jq -r '[.suites[].specs[].tests[] | select(.results[].status == "failed") | .title] | join("\n")' test-results.json || echo "No failed tests")
+            SKIPPED_LIST=$(jq -r '[.suites[].specs[].tests[] | select(.results[].status == "skipped") | .title] | join("\n")' test-results.json || echo "No skipped tests")
 
-            # Write summary to GitHub Actions step summary
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
+            echo "---" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
             echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
             echo "| ✅ Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
             echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
             echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY
+            echo "---" >> $GITHUB_STEP_SUMMARY
 
-            # Display lists of tests
             echo "### ✅ Passed Tests" >> $GITHUB_STEP_SUMMARY
             echo "$PASSED_LIST" >> $GITHUB_STEP_SUMMARY
 
@@ -72,18 +63,16 @@ jobs:
             echo "### ⏭ Skipped Tests" >> $GITHUB_STEP_SUMMARY
             echo "$SKIPPED_LIST" >> $GITHUB_STEP_SUMMARY
           else
-            echo "test-results.json not found!"
+            echo "test-results.json not found!" >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
 
-      # Step 8: Upload test-results.json as an artifact
       - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: test-results.json
 
-      # Step 9: Fail workflow if tests failed
       - name: Fail workflow if tests failed
         if: failure()
         run: exit 1
