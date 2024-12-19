@@ -7,8 +7,8 @@ require('@babel/register')({
     timeout: 200000,
     retries: 0,
     reporter: [
-      ['html', { open: 'never' }],
-      ['json', { outputFile: 'test-results.json' }] // Generate JSON report
+      ['html', { open: 'never' }], // HTML report
+      ['json', { outputFile: 'test-results.json' }] // JSON report
     ],
     use: {
       baseURL: process.env.BASE_URL,

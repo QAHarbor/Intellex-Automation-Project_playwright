@@ -13,42 +13,51 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
+      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Node.js (use Node.js 20 LTS)
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      # Install dependencies
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Fix Binary Permissions
-      - name: Fix Binary Permissions
+      # Step 4: Fix binary permissions
+      - name: Fix binary permissions
         run: chmod +x node_modules/.bin/*
 
-      # Install Playwright Browsers
-      - name: Install Playwright Browsers
+      # Step 5: Install Playwright browsers
+      - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # Run Playwright Tests and Generate JSON Report
-      - name: Run Playwright Tests with JSON Report
-        run: |
-          npx playwright test
-        continue-on-error: true # Continue even if tests fail
+      # Step 6: Run Playwright tests and generate JSON report
+      - name: Run Playwright tests
+        run: npx playwright test
+        continue-on-error: true # Allow the workflow to continue even if tests fail
 
-      # Process Test Results and Generate Summary
-      - name: Generate Test Summary
+      # Step 7: Verify `test-results.json` file existence and output contents
+      - name: Check test-results.json
         run: |
           if [[ -f test-results.json ]]; then
-            echo "Processing test results..."
-            PASSED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length' test-results.json 2>/dev/null || echo "0")
-            FAILED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length' test-results.json 2>/dev/null || echo "0")
-            SKIPPED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length' test-results.json 2>/dev/null || echo "0")
+            echo "test-results.json found:"
+            cat test-results.json
+          else
+            echo "test-results.json not found!"
+            exit 1
+          fi
+
+      # Step 8: Generate test summary
+      - name: Generate test summary
+        run: |
+          if [[ -f test-results.json ]]; then
+            PASSED=$(jq '[.suites[].specs[].tests[].results[] | select(.status == "passed")] | length' test-results.json || echo "0")
+            FAILED=$(jq '[.suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
+            SKIPPED=$(jq '[.suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
             echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
@@ -56,11 +65,18 @@ jobs:
             echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
             echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY
           else
-            echo "No test-results.json file found. Please check the test command."
+            echo "test-results.json not found!"
             exit 1
           fi
 
-      # Ensure the Workflow Fails if Tests Failed
-      - name: Fail Workflow if Tests Failed
-        if: failure() # Proceed only if the previous steps failed
+      # Step 9: Upload test results as an artifact
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: test-results.json
+
+      # Step 10: Fail the workflow if any tests failed
+      - name: Fail workflow if tests failed
+        if: failure()
         run: exit 1
