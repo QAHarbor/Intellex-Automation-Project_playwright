@@ -39,6 +39,7 @@ jobs:
       - name: Run Playwright Tests with JSON report
         run: |
           npx playwright test --reporter=json > test-results.json
+        continue-on-error: true # Prevent pipeline from stopping if tests fail
 
       # Summarize Test Results and Write to Job Summary
       - name: Generate Test Summary in Job UI
@@ -49,7 +50,6 @@ jobs:
             FAILED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length' test-results.json 2>/dev/null || echo "0")
             SKIPPED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length' test-results.json 2>/dev/null || echo "0")
             ERRORS=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "errored")] | length' test-results.json 2>/dev/null || echo "0")
-
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
             echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
@@ -61,3 +61,7 @@ jobs:
             echo "Warning: No test results file found."
             exit 0  # Exit successfully if no results file
           fi
+      # Ensure the process fails if any tests failed
+      - name: Fail CI on Test Failures
+        if: failure() # Check if the previous step failed
+        run: exit 1
