@@ -1,4 +1,4 @@
-name: Playwright Tests with Allure Report
+name: Playwright Tests with Test Case Details
 
 on:
   push:
@@ -13,27 +13,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
+      # Step 4: Fix binary permissions
       - name: Fix binary permissions
         run: chmod +x node_modules/.bin/*
 
+      # Step 5: Install Playwright browsers
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      # Step 6: Run Playwright tests
       - name: Run Playwright tests
         run: npx playwright test
         continue-on-error: true
 
+      # Step 7: Check test-results.json
       - name: Check test-results.json
         run: |
           if [[ -f test-results.json ]]; then
@@ -44,6 +51,7 @@ jobs:
             exit 1
           fi
 
+      # Step 8: Generate test summary with detailed test cases
       - name: Generate test summary
         run: |
           if [[ -f test-results.json ]]; then
@@ -51,9 +59,10 @@ jobs:
             FAILED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
             SKIPPED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
 
-            PASSED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed") | .name] | .[]' test-results.json || echo "None")
-            FAILED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed") | .name] | .[]' test-results.json || echo "None")
-            SKIPPED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped") | .name] | .[]' test-results.json || echo "None")
+            # Extract titles for passed, failed, and skipped tests
+            PASSED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed") | .title] | join("\n")' test-results.json || echo "None")
+            FAILED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed") | .title] | join("\n")' test-results.json || echo "None")
+            SKIPPED_LIST=$(jq -r '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped") | .title] | join("\n")' test-results.json || echo "None")
 
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
@@ -64,11 +73,25 @@ jobs:
 
             echo "### ✅ Passed Tests" >> $GITHUB_STEP_SUMMARY
             echo "$PASSED_LIST" >> $GITHUB_STEP_SUMMARY
+
             echo "### ❌ Failed Tests" >> $GITHUB_STEP_SUMMARY
             echo "$FAILED_LIST" >> $GITHUB_STEP_SUMMARY
+
             echo "### ⏭ Skipped Tests" >> $GITHUB_STEP_SUMMARY
             echo "$SKIPPED_LIST" >> $GITHUB_STEP_SUMMARY
           else
             echo "test-results.json not found!"
             exit 1
           fi
+
+      # Step 9: Upload test-results.json as an artifact
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: test-results.json
+
+      # Step 10: Fail workflow if tests failed
+      - name: Fail workflow if tests failed
+        if: failure()
+        run: exit 1
