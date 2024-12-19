@@ -35,33 +35,32 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # Run Playwright tests and generate output
-      - name: Run Playwright Tests with JSON report
+      # Run Playwright Tests and Generate JSON Report
+      - name: Run Playwright Tests with JSON Report
         run: |
           npx playwright test --reporter=json > test-results.json
-        continue-on-error: true # Prevent pipeline from stopping if tests fail
+        continue-on-error: true # Continue even if tests fail
 
-      # Summarize Test Results and Write to Job Summary
-      - name: Generate Test Summary in Job UI
+      # Process Test Results and Generate Summary
+      - name: Generate Test Summary
         run: |
           if [[ -f test-results.json ]]; then
             echo "Processing test results..."
             PASSED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length' test-results.json 2>/dev/null || echo "0")
             FAILED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length' test-results.json 2>/dev/null || echo "0")
             SKIPPED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length' test-results.json 2>/dev/null || echo "0")
-            ERRORS=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "errored")] | length' test-results.json 2>/dev/null || echo "0")
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
             echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
             echo "| ✅ Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
             echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
             echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY
-            echo "| ⚠️  Errored | $ERRORS |" >> $GITHUB_STEP_SUMMARY
           else
-            echo "Warning: No test results file found."
-            exit 0  # Exit successfully if no results file
+            echo "No test-results.json file found. Please check the test command."
+            exit 1
           fi
-      # Ensure the process fails if any tests failed
-      - name: Fail CI on Test Failures
-        if: failure() # Check if the previous step failed
+
+      # Ensure the Workflow Fails if Any Tests Failed
+      - name: Fail Workflow if Tests Failed
+        if: failure() # Proceed only if the previous steps failed
         run: exit 1
