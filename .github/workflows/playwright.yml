@@ -38,7 +38,7 @@ jobs:
       # Run Playwright Tests and Generate JSON Report
       - name: Run Playwright Tests with JSON Report
         run: |
-          npx playwright test --reporter=json > test-results.json
+          npx playwright test
         continue-on-error: true # Continue even if tests fail
 
       # Process Test Results and Generate Summary
@@ -60,7 +60,7 @@ jobs:
             exit 1
           fi
 
-      # Ensure the Workflow Fails if Any Tests Failed
+      # Ensure the Workflow Fails if Tests Failed
       - name: Fail Workflow if Tests Failed
         if: failure() # Proceed only if the previous steps failed
         run: exit 1
