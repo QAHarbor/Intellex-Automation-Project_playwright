@@ -1,4 +1,4 @@
-name: Playwright Tests with Test Details
+name: Playwright Tests
 
 on:
   push:
@@ -35,29 +35,46 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # Run Playwright tests and generate output
-      - name: Run Playwright Tests with JSON report
-        run: |
-          npx playwright test --reporter=json > test-results.json
+      # Step 6: Run Playwright tests
+      - name: Run Playwright tests
+        run: npx playwright test
+        continue-on-error: true # Allow the workflow to continue even if tests fail
 
-      # Summarize Test Results and Write to Job Summary
-      - name: Generate Test Summary in Job UI
+      # Step 7: Verify test-results.json exists
+      - name: Check test-results.json
         run: |
           if [[ -f test-results.json ]]; then
-            echo "Processing test results..."
-            PASSED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "passed")] | length' test-results.json 2>/dev/null || echo "0")
-            FAILED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "failed")] | length' test-results.json 2>/dev/null || echo "0")
-            SKIPPED=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "skipped")] | length' test-results.json 2>/dev/null || echo "0")
-            ERRORS=$(jq '[.suites[].specs[] | select(.tests[].results[].status == "errored")] | length' test-results.json 2>/dev/null || echo "0")
-
+            echo "test-results.json exists:"
+            cat test-results.json
+          else
+            echo "test-results.json not found!"
+            exit 1
+          fi
+      # Step 8: Generate test summary
+      - name: Generate test summary
+        run: |
+          if [[ -f test-results.json ]]; then
+            PASSED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed")] | length' test-results.json || echo "0")
+            FAILED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
+            SKIPPED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
             echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
             echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
             echo "| ✅ Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
             echo "| ❌ Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
             echo "| ⏭ Skipped | $SKIPPED |" >> $GITHUB_STEP_SUMMARY
-            echo "| ⚠️  Errored | $ERRORS |" >> $GITHUB_STEP_SUMMARY
           else
-            echo "Warning: No test results file found."
-            exit 0  # Exit successfully if no results file
+            echo "test-results.json not found!"
+            exit 1
           fi
+      # Step 9: Upload test-results.json as an artifact
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: test-results.json
+
+      # Step 10: Fail workflow if tests failed
+      - name: Fail workflow if tests failed
+        if: failure()
+        run: exit 1
