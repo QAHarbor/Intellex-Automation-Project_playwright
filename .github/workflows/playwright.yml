@@ -57,7 +57,7 @@ jobs:
             PASSED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "passed")] | length' test-results.json || echo "0")
             FAILED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "failed")] | length' test-results.json || echo "0")
             SKIPPED=$(jq '[.suites[].suites[].specs[].tests[].results[] | select(.status == "skipped")] | length' test-results.json || echo "0")
-            echo "### 🎉 Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
+            echo "### 🎉 intellex-academic-core-Automaiton Test Results Summary 🎉" >> $GITHUB_STEP_SUMMARY
             echo "| Status  | Count |" >> $GITHUB_STEP_SUMMARY
             echo "|---------|-------|" >> $GITHUB_STEP_SUMMARY
             echo "| ✅ Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
