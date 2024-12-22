@@ -1,0 +1,14 @@
+{
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "alias": {
+            "@page-objects": "./page-objects",
+            "@fixtures": "./tests/fixtures"
+          }
+        }
+      ]
+    ]
+  }
+  

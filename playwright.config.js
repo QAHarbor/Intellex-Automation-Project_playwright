@@ -1,26 +1,23 @@
-const path = require('path');
-
-module.exports = {
+require('@babel/register')({
+    extensions: ['.js', '.ts'],
+  });
+  
+  module.exports = {
     testDir: './tests',
     timeout: 200000,
-    retries: 0, // Disable retries
-    reporter: [['html', { open: 'never' }]], // Generate HTML reports
+    retries: 0,
+    reporter: [
+      ['html', { open: 'never' }], // HTML report
+      ['json', { outputFile: 'test-results.json' }] // JSON report
+    ],
     use: {
         baseURL: process.env.BASE_URL, // Ensure BASE_URL is set
-        headless: false, // Set this to false if you want to view the browser during local testing
+        headless: true, // Set this to false if you want to view the browser during local testing
         viewport: { width: 1280, height: 720 },
     },
-  
-    // Pattern for including test files
     testMatch: [
-        '**/*.spec.js', // Include all spec files
-        '**/*.test.js'   // Include all test files
+      '**/*.spec.js',
+      '**/*.test.js'
     ],
-
-    resolve: {
-        alias: {
-            '@page-objects': path.resolve(__dirname, './page-objects'),
-            '@fixtures': path.resolve(__dirname, './tests/fixtures'),
-        },
-    },
-};
+  };
+  
