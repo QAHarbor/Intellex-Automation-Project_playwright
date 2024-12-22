@@ -9,10 +9,9 @@ class HomePage {
         
         this.headingLocator = page.locator('h2:has-text("Mentors")');
 
-
         // Locators for main buttons
-        this.joinUsButton = page.locator('button', { name: 'Join Us' });
-        this.joinAsMentorMenuItem = page.locator('menuitem', { name: 'Join as Mentor' });
+        this.joinUsButton = page.locator('role=button[name="Join Us"]');
+        this.joinAsMentorMenuItem = page.locator('role=menuitem[name="Join as Mentor"]');
 
         this.homeBtn = page.locator('a.MuiStack-root.mui-1g1jecy');
         this.findMentorBtn = page.locator('a.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButton-colorPrimary');
@@ -45,17 +44,15 @@ class HomePage {
         await this.findMentorBtn.click();
     }
 
-     // Assertion: Ensure the heading is visible
-     async waitForHeading() {
+    // Assertion: Ensure the heading is visible
+    async waitForHeading() {
         await this.headingLocator.waitFor({ state: 'visible' });
-      }
-    
-      // Get the text content of the heading
-      async getHeadingText() {
-        return await this.headingLocator.textContent();
-      }
+    }
 
-  
+    // Get the text content of the heading
+    async getHeadingText() {
+        return await this.headingLocator.textContent();
+    }
 
     async createNewAcc() {
         await this.createAccBtn.click();
@@ -65,53 +62,43 @@ class HomePage {
         await this.seeMoreBtn.click();
     }
 
-    // Method to join as mentor
-  async joinMentor() {
-    try {
-      // Click the "Join Us" button
-      await this.joinUsButton.click();
-
-      // Click the "Join as Mentor" menu item
-      await this.joinAsMentorMenuItem.click();
-    } catch (error) {
-      console.error('Error during joinMentor:', error);
+    // Click on the "Join as Mentor" menu item
+    async clickJoinAsMentor() {
+        await this.joinAsMentorMenuItem.click();
     }
-  }
+
+    // Click on the "Join Us" button
+    async clickJoinUsButton() {
+        await this.joinUsButton.click();
+    }
 
     // Footer navigation methods
     async footerBecomeMentee() {
         await this.footerBeMenteeBtn.click();
-        
     }
 
     async footerFindMentor() {
         await this.footerFindMentorBtn.click();
-        
     }
 
     async footerBecomeMentor() {
         await this.footerBeMentorBtn.click();
-       
     }
 
     async footerAboutUs() {
         await this.footerAboutBtn.click();
-        
     }
 
     async footerPrivacy() {
         await this.footerPrivacyBtn.click();
-    
     }
 
     async footerTerms() {
         await this.footerTermsBtn.click();
-       
     }
 
     async footerLinkedIn() {
         await this.footerLinkedinBtn.click();
-       
     }
 }
 
