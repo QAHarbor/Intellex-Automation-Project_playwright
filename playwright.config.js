@@ -12,7 +12,7 @@ require('@babel/register')({
     ],
     use: {
         baseURL: process.env.BASE_URL, // Ensure BASE_URL is set
-        headless: true, // Set this to false if you want to view the browser during local testing
+        headless: false, // Set this to false if you want to view the browser during local testing
         viewport: { width: 1280, height: 720 },
     },
     testMatch: [
