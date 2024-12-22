@@ -23,6 +23,9 @@ test.describe('Mentee Profile Tests', () => {
         await page.getByRole('button', { name: 'Profile' }).click();
     });
 
+
+
+    
     // Test case: Successfully updates personal details
     test('Mentee Successfully Updates Personal Details', async ({ page }) => {
         // Update personal details
@@ -30,15 +33,27 @@ test.describe('Mentee Profile Tests', () => {
             personalDetails.valid.firstName,
             personalDetails.valid.lastName
         );
-
         // Verify updated personal details
         const updatedDetails = await profilePage.getPersonalDetails();
         expect(updatedDetails.firstName).toBe(personalDetails.valid.firstName);
         expect(updatedDetails.lastName).toBe(personalDetails.valid.lastName);
     });
 
-    
 
+    test('Mentee Successfully update profile picture', async ({ page }) => {
+
+        await profilePage.setValidProfilePicture();
+
+    });
+
+    test('Mentee Successfully changed password', async ({ page }) => {
+
+        await profilePage.changePassword('Test@12345678', 'Test@12345678');
+        console.log('Changed password sucessfully');
+
+    });
+
+    
     // Test case: Successfully updates bio
     test('Mentee Successfully Updates Their Bio', async ({ page }) => {
 
@@ -61,5 +76,21 @@ test.describe('Mentee Profile Tests', () => {
         expect(bioText).toBe(bio.valid.bio);
     });
 
+    test('Mentee Successfully Update Preferences', async ({ page }) => {
+        // Update interests first
+        await profilePage.updateInterests();
+    
+        // Fetch the updated interests text
+        const updatedInterestsText = await profilePage.getInterests();
+    
+        // Assert that the updated interests text matches the expected value
+        const expectedInterestsText = 'My interests/preferences'; // Replace with the actual expected text
+        expect(updatedInterestsText).toBe(expectedInterestsText);
+    });
+   
+
+    
+
+   
     
 });

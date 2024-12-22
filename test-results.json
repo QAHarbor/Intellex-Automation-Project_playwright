@@ -26,6 +26,10 @@
         {
           "outputFile": "test-results.json"
         }
+      ],
+      [
+        "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\node_modules\\allure-playwright\\dist\\cjs\\index.js",
+        null
       ]
     ],
     "reportSlowTests": {
@@ -47,12 +51,12 @@
           "**/*.spec.js",
           "**/*.test.js"
         ],
-        "timeout": 200000
+        "timeout": 20000
       }
     ],
     "shard": null,
     "updateSnapshots": "missing",
-    "version": "1.49.0",
+    "version": "1.49.1",
     "workers": 4,
     "webServer": null
   },
@@ -72,11 +76,11 @@
           "specs": [
             {
               "title": "should log in successfully with valid credentials",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -84,17 +88,33 @@
                   "results": [
                     {
                       "workerIndex": 0,
-                      "status": "passed",
-                      "duration": 26720,
-                      "errors": [],
+                      "status": "timedOut",
+                      "duration": 20104,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                            "column": 31,
+                            "line": 16
+                          },
+                          "message": "Error: locator.fill: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Enter your email')\u001b[22m\n\u001b[2m    - waiting for\" https://intellex-academic-core.vercel.app/login/\" navigation to finish...\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\AuthPage.js:16\n\n\u001b[0m \u001b[90m 14 |\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36masync\u001b[39m login(email\u001b[33m,\u001b[39m password) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memailInput\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpasswordInput\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mloginButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m     }\u001b[0m\n\u001b[2m    at AuthPage.login (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js:16:31)\u001b[22m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js:16:24\u001b[22m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-12-22T06:26:40.329Z",
+                      "startTime": "2024-12-22T11:25:42.336Z",
                       "attachments": []
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "ea8bd4394f3d5fcfe118-d05abe25ba568e7fa807",
@@ -108,58 +128,38 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 0,
-                      "status": "failed",
-                      "duration": 25031,
+                      "workerIndex": 6,
+                      "status": "timedOut",
+                      "duration": 20111,
                       "error": {
-                        "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Incorrect email or password')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Incorrect email or password')\u001b[22m\n",
-                        "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Incorrect email or password')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Incorrect email or password')\u001b[22m\n\n    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js:37:30",
-                        "matcherResult": {
-                          "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Incorrect email or password')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Incorrect email or password')\u001b[22m\n",
-                          "pass": false,
-                          "actual": "hidden",
-                          "name": "toBeVisible",
-                          "expected": "visible",
-                          "log": [
-                            "  - expect.toBeVisible with timeout 5000ms",
-                            "  - waiting for locator('text=Incorrect email or password')"
-                          ],
-                          "timeout": 5000
-                        },
-                        "location": {
-                          "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js",
-                          "column": 30,
-                          "line": 37
-                        },
-                        "snippet": "\u001b[0m \u001b[90m 35 |\u001b[39m     \u001b[90m// Assert that the error message \"Incorrect email or password\" is visible on the page\u001b[39m\n \u001b[90m 36 |\u001b[39m   \u001b[36mconst\u001b[39m errorMessage \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Incorrect email or password'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m   \u001b[36mawait\u001b[39m expect(errorMessage)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m     \n \u001b[90m 40 |\u001b[39m     })\u001b[33m;\u001b[39m\u001b[0m"
+                        "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
                       },
                       "errors": [
                         {
+                          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                        },
+                        {
                           "location": {
-                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js",
-                            "column": 30,
-                            "line": 37
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                            "column": 31,
+                            "line": 16
                           },
-                          "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('text=Incorrect email or password')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=Incorrect email or password')\u001b[22m\n\n\n\u001b[0m \u001b[90m 35 |\u001b[39m     \u001b[90m// Assert that the error message \"Incorrect email or password\" is visible on the page\u001b[39m\n \u001b[90m 36 |\u001b[39m   \u001b[36mconst\u001b[39m errorMessage \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Incorrect email or password'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m   \u001b[36mawait\u001b[39m expect(errorMessage)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m     \n \u001b[90m 40 |\u001b[39m     })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js:37:30\u001b[22m"
+                          "message": "Error: locator.fill: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Enter your email')\u001b[22m\n\u001b[2m    - waiting for\" https://intellex-academic-core.vercel.app/login/\" navigation to finish...\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\AuthPage.js:16\n\n\u001b[0m \u001b[90m 14 |\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36masync\u001b[39m login(email\u001b[33m,\u001b[39m password) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memailInput\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpasswordInput\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mloginButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m     }\u001b[0m\n\u001b[2m    at AuthPage.login (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js:16:31)\u001b[22m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js:34:24\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-12-22T06:27:07.460Z",
-                      "attachments": [],
-                      "errorLocation": {
-                        "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\auth\\mentee_auth.spec.js",
-                        "column": 30,
-                        "line": 37
-                      }
+                      "startTime": "2024-12-22T11:26:05.000Z",
+                      "attachments": []
                     }
                   ],
                   "status": "unexpected"
@@ -167,7 +167,7 @@
               ],
               "id": "ea8bd4394f3d5fcfe118-5b1b7217886cf0e88913",
               "file": "auth/mentee_auth.spec.js",
-              "line": 26,
+              "line": 27,
               "column": 9
             }
           ]
@@ -189,11 +189,11 @@
           "specs": [
             {
               "title": "should sign up mentor successfully with valid credentials and handle duplicate email",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -201,31 +201,319 @@
                   "results": [
                     {
                       "workerIndex": 1,
-                      "status": "passed",
-                      "duration": 50546,
-                      "errors": [],
-                      "stdout": [
+                      "status": "timedOut",
+                      "duration": 20084,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
                         {
-                          "text": "\u001b[33mtrue\u001b[39m\n"
+                          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\MentorSignUpPage.js",
+                            "column": 25,
+                            "line": 28
+                          },
+                          "message": "Error: page.goto: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://intellex-academic-core.vercel.app/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\MentorSignUpPage.js:28\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36masync\u001b[39m navigateToSignUp() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'https://intellex-academic-core.vercel.app/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mjoinUsButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mjoinAsMentorButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 31 |\u001b[39m     }\u001b[0m\n\u001b[2m    at MentorSignUpPage.navigateToSignUp (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\MentorSignUpPage.js:28:25)\u001b[22m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\auth\\mentor_auth.spec.js:15:28\u001b[22m"
                         }
                       ],
-                      "stderr": [
-                        {
-                          "text": "Unexpected result: Neither success nor error message is displayed.\n"
-                        }
-                      ],
+                      "stdout": [],
+                      "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-12-22T06:26:40.504Z",
+                      "startTime": "2024-12-22T11:25:42.312Z",
                       "attachments": []
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "61e955e431be7c8c864d-7b453eb2b6c1bb20cdbe",
               "file": "auth/mentor_auth.spec.js",
               "line": 11,
               "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "home\\FooterTests.spec.js",
+      "file": "home/FooterTests.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Home Page Navigation Tests",
+          "file": "home/FooterTests.spec.js",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Successful Navihate to Terms Condition Page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "status": "timedOut",
+                      "duration": 20039,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\FooterTests.spec.js",
+                            "column": 35,
+                            "line": 14
+                          },
+                          "message": "Error: page.textContent: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('p.MuiTypography-root.header-text')\u001b[22m\n\n\n\u001b[0m \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m homePage\u001b[33m.\u001b[39mfooterTerms()\u001b[33m;\u001b[39m\n \u001b[90m 13 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 14 |\u001b[39m     \u001b[36mconst\u001b[39m headerText \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mtextContent(\u001b[32m'p.MuiTypography-root.header-text'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 15 |\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[90m// Assert that the header text matches the expected value\u001b[39m\n \u001b[90m 17 |\u001b[39m     expect(headerText\u001b[33m.\u001b[39mtrim())\u001b[33m.\u001b[39mtoBe(\u001b[32m'Terms & Conditions'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\FooterTests.spec.js:14:35\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-22T11:25:42.313Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "fad340b25582eacfb966-42bc4e9de3392eb21421",
+              "file": "home/FooterTests.spec.js",
+              "line": 6,
+              "column": 7
+            },
+            {
+              "title": "Successful Navigation to About Us Page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "status": "timedOut",
+                      "duration": 20041,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js",
+                            "column": 25,
+                            "line": 40
+                          },
+                          "message": "Error: page.goto: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://intellex-academic-core.vercel.app/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\HomePage.js:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m     \u001b[36masync\u001b[39m navigateToHome() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mbaseUrl)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m     \u001b[36masync\u001b[39m navigateToFindMentor() {\u001b[0m\n\u001b[2m    at HomePage.navigateToHome (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js:40:25)\u001b[22m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\FooterTests.spec.js:25:20\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-22T11:26:04.514Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "fad340b25582eacfb966-2282f9fffeae32d884c3",
+              "file": "home/FooterTests.spec.js",
+              "line": 21,
+              "column": 7
+            },
+            {
+              "title": "Successful Navigation to Become Mentee Page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "status": "passed",
+                      "duration": 2594,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Assertion Passed: Mentee Sign Up page displayed\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-22T11:26:27.066Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fad340b25582eacfb966-bb81ef972e084391e3e4",
+              "file": "home/FooterTests.spec.js",
+              "line": 36,
+              "column": 7
+            },
+            {
+              "title": "Sucessful Navigation Become Mentor Page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "status": "passed",
+                      "duration": 2214,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Successfully navigated to Become Mentor Page\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-22T11:26:29.855Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fad340b25582eacfb966-7a7bc540abce93300deb",
+              "file": "home/FooterTests.spec.js",
+              "line": 46,
+              "column": 9
+            },
+            {
+              "title": "Sucessful Navigation to Find Mentor",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "status": "passed",
+                      "duration": 1804,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Successfully navigated to Find Mentor Page\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-22T11:26:32.079Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fad340b25582eacfb966-3f2a1f4accac0854a8b3",
+              "file": "home/FooterTests.spec.js",
+              "line": 60,
+              "column": 9
+            },
+            {
+              "title": "Sucessful Navigation to Privacy page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "status": "failed",
+                      "duration": 10695,
+                      "error": {
+                        "message": "Error: page.textContent: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('p.MuiTypography-root.header-text')\u001b[22m\n",
+                        "stack": "Error: page.textContent: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('p.MuiTypography-root.header-text')\u001b[22m\n\n    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\FooterTests.spec.js:86:39",
+                        "location": {
+                          "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\FooterTests.spec.js",
+                          "column": 39,
+                          "line": 86
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 84 |\u001b[39m\n \u001b[90m 85 |\u001b[39m  \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m         \u001b[36mconst\u001b[39m headerText \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mtextContent(\u001b[32m'p.MuiTypography-root.header-text'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m     \n \u001b[90m 88 |\u001b[39m         \u001b[90m// Assert that the header text matches the expected value\u001b[39m\n \u001b[90m 89 |\u001b[39m         \u001b[36mif\u001b[39m (headerText\u001b[33m.\u001b[39mtrim() \u001b[33m===\u001b[39m \u001b[32m'Privacy Policy'\u001b[39m) {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\FooterTests.spec.js",
+                            "column": 39,
+                            "line": 86
+                          },
+                          "message": "Error: page.textContent: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('p.MuiTypography-root.header-text')\u001b[22m\n\n\n\u001b[0m \u001b[90m 84 |\u001b[39m\n \u001b[90m 85 |\u001b[39m  \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m         \u001b[36mconst\u001b[39m headerText \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mtextContent(\u001b[32m'p.MuiTypography-root.header-text'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 87 |\u001b[39m     \n \u001b[90m 88 |\u001b[39m         \u001b[90m// Assert that the header text matches the expected value\u001b[39m\n \u001b[90m 89 |\u001b[39m         \u001b[36mif\u001b[39m (headerText\u001b[33m.\u001b[39mtrim() \u001b[33m===\u001b[39m \u001b[32m'Privacy Policy'\u001b[39m) {\u001b[0m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\FooterTests.spec.js:86:39\u001b[22m"
+                        },
+                        {
+                          "message": "Error: Test ended.\nBrowser logs:\n\n<launching> C:\\Users\\User\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1148\\chrome-win\\headless_shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades,PaintHolding,ThirdPartyStoragePartitioning,LensOverlay,PlzDedicatedWorker --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\\Users\\User\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-swmLb4 --remote-debugging-pipe --no-startup-window\n<launched> pid=14020\n[pid=14020] <gracefully close start>"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-22T11:26:33.894Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\FooterTests.spec.js",
+                        "column": 39,
+                        "line": 86
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "fad340b25582eacfb966-df24eb72e1a178a3b87f",
+              "file": "home/FooterTests.spec.js",
+              "line": 76,
+              "column": 9
             }
           ]
         }
@@ -246,33 +534,45 @@
           "specs": [
             {
               "title": "Successful Navigation to Join as Mentor Page",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "status": "passed",
-                      "duration": 34395,
-                      "errors": [],
-                      "stdout": [
+                      "workerIndex": 3,
+                      "status": "timedOut",
+                      "duration": 20050,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
                         {
-                          "text": "Successfully navigated to Join as Mentor.\n"
+                          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js",
+                            "column": 16,
+                            "line": 18
+                          },
+                          "message": "Error: page.waitForURL: Test timeout of 20000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"https://intellex-academic-core.vercel.app/register/?type=mentor\" until \"load\"\n============================================================\n\n\u001b[0m \u001b[90m 16 |\u001b[39m\n \u001b[90m 17 |\u001b[39m     \u001b[90m// Wait for the URL to change to the expected one\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForURL(\u001b[32m'https://intellex-academic-core.vercel.app/register/?type=mentor'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m50000\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 19 |\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[90m// Assert that the URL is correct after navigation\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'https://intellex-academic-core.vercel.app/register/?type=mentor'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js:18:16\u001b[22m"
                         }
                       ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-12-22T06:26:40.425Z",
+                      "startTime": "2024-12-22T11:25:42.343Z",
                       "attachments": []
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "a02391dad5b2ae76e406-06ddb713a65e3ebe0584",
@@ -282,33 +582,45 @@
             },
             {
               "title": "Successful Navigation to Find Mentor Page",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "status": "passed",
-                      "duration": 22159,
-                      "errors": [],
-                      "stdout": [
+                      "workerIndex": 5,
+                      "status": "timedOut",
+                      "duration": 20049,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
                         {
-                          "text": "Heading Text: Mentors\n"
+                          "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js",
+                            "column": 35,
+                            "line": 49
+                          },
+                          "message": "Error: locator.waitFor: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('h2:has-text(\"Mentors\")') to be visible\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\HomePage.js:49\n\n\u001b[0m \u001b[90m 47 |\u001b[39m     \u001b[90m// Assertion: Ensure the heading is visible\u001b[39m\n \u001b[90m 48 |\u001b[39m     \u001b[36masync\u001b[39m waitForHeading() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 49 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mheadingLocator\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 50 |\u001b[39m     }\n \u001b[90m 51 |\u001b[39m\n \u001b[90m 52 |\u001b[39m     \u001b[90m// Get the text content of the heading\u001b[39m\u001b[0m\n\u001b[2m    at HomePage.waitForHeading (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js:49:35)\u001b[22m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js:32:24\u001b[22m"
                         }
                       ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-12-22T06:27:15.959Z",
+                      "startTime": "2024-12-22T11:26:04.501Z",
                       "attachments": []
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "a02391dad5b2ae76e406-66601a13622fbea83718",
@@ -318,33 +630,56 @@
             },
             {
               "title": "Successful Navigation to Home Page",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 2,
-                      "status": "passed",
-                      "duration": 1770,
-                      "errors": [],
-                      "stdout": [
+                      "workerIndex": 8,
+                      "status": "failed",
+                      "duration": 17346,
+                      "error": {
+                        "message": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://intellex-academic-core.vercel.app/\", waiting until \"load\"\u001b[22m\n",
+                        "stack": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://intellex-academic-core.vercel.app/\", waiting until \"load\"\u001b[22m\n\n    at HomePage.navigateToHome (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js:40:25)\n    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js:46:24",
+                        "location": {
+                          "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js",
+                          "column": 25,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\page-objects\\HomePage.js:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m     \u001b[36masync\u001b[39m navigateToHome() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mbaseUrl)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m     \u001b[36masync\u001b[39m navigateToFindMentor() {\u001b[0m"
+                      },
+                      "errors": [
                         {
-                          "text": "Successfully navigated to Home page.\n"
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js",
+                            "column": 25,
+                            "line": 40
+                          },
+                          "message": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://intellex-academic-core.vercel.app/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\HomePage.js:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m     \u001b[36masync\u001b[39m navigateToHome() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mbaseUrl)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     }\n \u001b[90m 42 |\u001b[39m\n \u001b[90m 43 |\u001b[39m     \u001b[36masync\u001b[39m navigateToFindMentor() {\u001b[0m\n\u001b[2m    at HomePage.navigateToHome (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js:40:25)\u001b[22m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\home\\HomePage.spec.js:46:24\u001b[22m"
+                        },
+                        {
+                          "message": "Error: Test ended.\nBrowser logs:\n\n<launching> C:\\Users\\User\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1148\\chrome-win\\headless_shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades,PaintHolding,ThirdPartyStoragePartitioning,LensOverlay,PlzDedicatedWorker --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\\Users\\User\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-2oagEc --remote-debugging-pipe --no-startup-window\n<launched> pid=16764\n[pid=16764] <gracefully close start>"
                         }
                       ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-12-22T06:27:38.139Z",
-                      "attachments": []
+                      "startTime": "2024-12-22T11:26:27.073Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\HomePage.js",
+                        "column": 25,
+                        "line": 40
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "a02391dad5b2ae76e406-1a1bf411fcf65c34c3f1",
@@ -358,29 +693,13 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 2,
-                      "status": "passed",
-                      "duration": 24455,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "Successfully navigated to Mentee Create Account page.\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2024-12-22T06:27:39.927Z",
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
               "id": "a02391dad5b2ae76e406-95c1bef67634889cd6f0",
@@ -394,35 +713,219 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 2,
-                      "status": "passed",
-                      "duration": 16438,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "Successfully navigated to Mentor Filter page.\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2024-12-22T06:28:04.400Z",
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
               "id": "a02391dad5b2ae76e406-1fae7193976772f15668",
               "file": "home/HomePage.spec.js",
               "line": 68,
               "column": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "mentee\\MenteeActionTests.spec.js",
+      "file": "mentee/MenteeActionTests.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Mentee Action TestCases",
+          "file": "mentee/MenteeActionTests.spec.js",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Navigate to Browse Mentor page successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "status": "timedOut",
+                      "duration": 20060,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 20000ms exceeded while running \"beforeEach\" hook.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 20000ms exceeded while running \"beforeEach\" hook.\u001b[39m\n    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\MenteeActionTests.spec.js:15:8",
+                        "location": {
+                          "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\MenteeActionTests.spec.js",
+                          "column": 8,
+                          "line": 15
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 13 |\u001b[39m\n \u001b[90m 14 |\u001b[39m   \u001b[90m// Before each test, initialize pages and log in\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m   test\u001b[33m.\u001b[39mbeforeEach(\u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     authPage \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mAuthPage\u001b[39m(page)\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m     mentorFiltersPage \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mMentorFiltersPage\u001b[39m(page)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m     menteeAction \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mMenteeAction\u001b[39m(page)\u001b[33m;\u001b[39m \u001b[90m// Initialize menteeAction instance\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\MenteeActionTests.spec.js",
+                            "column": 8,
+                            "line": 15
+                          },
+                          "message": "\u001b[31mTest timeout of 20000ms exceeded while running \"beforeEach\" hook.\u001b[39m\n\n\u001b[0m \u001b[90m 13 |\u001b[39m\n \u001b[90m 14 |\u001b[39m   \u001b[90m// Before each test, initialize pages and log in\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m   test\u001b[33m.\u001b[39mbeforeEach(\u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     authPage \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mAuthPage\u001b[39m(page)\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m     mentorFiltersPage \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mMentorFiltersPage\u001b[39m(page)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m     menteeAction \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mMenteeAction\u001b[39m(page)\u001b[33m;\u001b[39m \u001b[90m// Initialize menteeAction instance\u001b[39m\u001b[0m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\MenteeActionTests.spec.js:15:8\u001b[22m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                            "column": 34,
+                            "line": 17
+                          },
+                          "message": "Error: locator.fill: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Enter your password')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"password\" type=\"password\" aria-invalid=\"false\" form=\"[object Object]\" autocomplete=\"new-password\" placeholder=\"Enter your password\" aria-describedby=\"password-helper-text\" class=\"MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd mui-1jyh38l\"/>\u001b[22m\n\u001b[2m    - fill(\"Testdata@123\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\AuthPage.js:17\n\n\u001b[0m \u001b[90m 15 |\u001b[39m     \u001b[36masync\u001b[39m login(email\u001b[33m,\u001b[39m password) {\n \u001b[90m 16 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memailInput\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpasswordInput\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mloginButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m     }\n \u001b[90m 20 |\u001b[39m\u001b[0m\n\u001b[2m    at AuthPage.login (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js:17:34)\u001b[22m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\MenteeActionTests.spec.js:22:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-22T11:26:05.018Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\MenteeActionTests.spec.js",
+                        "column": 8,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "6b904c9af08bed45e5b9-850ed41aa985ec60916c",
+              "file": "mentee/MenteeActionTests.spec.js",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "Search with no results displays the correct message",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "status": "failed",
+                      "duration": 17219,
+                      "error": {
+                        "message": "Error: locator.fill: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Enter your email')\u001b[22m\n",
+                        "stack": "Error: locator.fill: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Enter your email')\u001b[22m\n\n    at AuthPage.login (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js:16:31)\n    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\MenteeActionTests.spec.js:22:20",
+                        "location": {
+                          "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                          "column": 31,
+                          "line": 16
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\page-objects\\AuthPage.js:16\n\n\u001b[0m \u001b[90m 14 |\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36masync\u001b[39m login(email\u001b[33m,\u001b[39m password) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memailInput\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpasswordInput\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mloginButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m     }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                            "column": 31,
+                            "line": 16
+                          },
+                          "message": "Error: locator.fill: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for getByPlaceholder('Enter your email')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\AuthPage.js:16\n\n\u001b[0m \u001b[90m 14 |\u001b[39m\n \u001b[90m 15 |\u001b[39m     \u001b[36masync\u001b[39m login(email\u001b[33m,\u001b[39m password) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memailInput\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpasswordInput\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mloginButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 19 |\u001b[39m     }\u001b[0m\n\u001b[2m    at AuthPage.login (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js:16:31)\u001b[22m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\MenteeActionTests.spec.js:22:20\u001b[22m"
+                        },
+                        {
+                          "message": "Error: Test ended.\nBrowser logs:\n\n<launching> C:\\Users\\User\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1148\\chrome-win\\headless_shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades,PaintHolding,ThirdPartyStoragePartitioning,LensOverlay,PlzDedicatedWorker --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\\Users\\User\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-7H2Uiv --remote-debugging-pipe --no-startup-window\n<launched> pid=18692\n[pid=18692] <gracefully close start>"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-12-22T11:26:27.131Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                        "column": 31,
+                        "line": 16
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "6b904c9af08bed45e5b9-37700f4329f593294c8f",
+              "file": "mentee/MenteeActionTests.spec.js",
+              "line": 41,
+              "column": 7
+            },
+            {
+              "title": "Add mentor to favorite list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6b904c9af08bed45e5b9-d0abaa4434c06d49d3fa",
+              "file": "mentee/MenteeActionTests.spec.js",
+              "line": 57,
+              "column": 7
+            },
+            {
+              "title": "Remove mentor from favorite list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6b904c9af08bed45e5b9-ed95795ccca0e39a150c",
+              "file": "mentee/MenteeActionTests.spec.js",
+              "line": 73,
+              "column": 7
+            },
+            {
+              "title": "Mentee can see all events",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "6b904c9af08bed45e5b9-2ba7e70342b5cdfbd423",
+              "file": "mentee/MenteeActionTests.spec.js",
+              "line": 89,
+              "column": 7
             }
           ]
         }
@@ -443,21 +946,43 @@
           "specs": [
             {
               "title": "Successfully applies checkbox filters and verifies selection",
-              "ok": true,
+              "ok": false,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 3,
-                      "status": "passed",
-                      "duration": 61062,
-                      "errors": [],
+                      "workerIndex": 11,
+                      "status": "failed",
+                      "duration": 16968,
+                      "error": {
+                        "message": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://intellex-academic-core.vercel.app/\", waiting until \"load\"\u001b[22m\n",
+                        "stack": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://intellex-academic-core.vercel.app/\", waiting until \"load\"\u001b[22m\n\n    at AuthPage.navigateToLogin (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js:11:25)\n    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\mentorFilters.spec.js:23:20",
+                        "location": {
+                          "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                          "column": 25,
+                          "line": 11
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\page-objects\\AuthPage.js:11\n\n\u001b[0m \u001b[90m  9 |\u001b[39m\n \u001b[90m 10 |\u001b[39m     \u001b[36masync\u001b[39m navigateToLogin() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'https://intellex-academic-core.vercel.app/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mloginLink\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 13 |\u001b[39m     }\n \u001b[90m 14 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                            "column": 25,
+                            "line": 11
+                          },
+                          "message": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://intellex-academic-core.vercel.app/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\page-objects\\AuthPage.js:11\n\n\u001b[0m \u001b[90m  9 |\u001b[39m\n \u001b[90m 10 |\u001b[39m     \u001b[36masync\u001b[39m navigateToLogin() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mgoto(\u001b[32m'https://intellex-academic-core.vercel.app/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 12 |\u001b[39m         \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mloginLink\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 13 |\u001b[39m     }\n \u001b[90m 14 |\u001b[39m\u001b[0m\n\u001b[2m    at AuthPage.navigateToLogin (D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js:11:25)\u001b[22m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\mentorFilters.spec.js:23:20\u001b[22m"
+                        },
+                        {
+                          "message": "Error: Test ended.\nBrowser logs:\n\n<launching> C:\\Users\\User\\AppData\\Local\\ms-playwright\\chromium_headless_shell-1148\\chrome-win\\headless_shell.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades,PaintHolding,ThirdPartyStoragePartitioning,LensOverlay,PlzDedicatedWorker --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=C:\\Users\\User\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-00gVkk --remote-debugging-pipe --no-startup-window\n<launched> pid=7976\n[pid=7976] <gracefully close start>"
+                        }
+                      ],
                       "stdout": [
                         {
                           "text": "tasnivasumibd@gmail.com\n"
@@ -468,11 +993,16 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-12-22T06:26:40.355Z",
-                      "attachments": []
+                      "startTime": "2024-12-22T11:26:27.478Z",
+                      "attachments": [],
+                      "errorLocation": {
+                        "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\page-objects\\AuthPage.js",
+                        "column": 25,
+                        "line": 11
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
               "id": "cbd4a3fe8fae798f021e-fcf14629e274e6f9944d",
@@ -486,55 +1016,12 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 3,
-                      "status": "interrupted",
-                      "duration": 185619,
-                      "error": {
-                        "message": "Error: locator.click: Test ended.\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: 'Browse Mentor' })\u001b[22m\n",
-                        "stack": "Error: locator.click: Test ended.\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: 'Browse Mentor' })\u001b[22m\n\n    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\mentorFilters.spec.js:61:62",
-                        "location": {
-                          "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\mentorFilters.spec.js",
-                          "column": 62,
-                          "line": 61
-                        },
-                        "snippet": "\u001b[0m \u001b[90m 59 |\u001b[39m\n \u001b[90m 60 |\u001b[39m      \u001b[90m// Navigate to Browse Mentors page\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m      \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Browse Mentor'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m      \n \u001b[90m 63 |\u001b[39m     \u001b[90m// Switch to \"Accounting\" tab and verify it is selected\u001b[39m\n \u001b[90m 64 |\u001b[39m     \u001b[36mawait\u001b[39m mentorFiltersPage\u001b[33m.\u001b[39mselectAccountingTab()\u001b[33m;\u001b[39m\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\mentorFilters.spec.js",
-                            "column": 62,
-                            "line": 61
-                          },
-                          "message": "Error: locator.click: Test ended.\nCall log:\n\u001b[2m  - waiting for getByRole('link', { name: 'Browse Mentor' })\u001b[22m\n\n\n\u001b[0m \u001b[90m 59 |\u001b[39m\n \u001b[90m 60 |\u001b[39m      \u001b[90m// Navigate to Browse Mentors page\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 61 |\u001b[39m      \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[32m'Browse Mentor'\u001b[39m })\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 62 |\u001b[39m      \n \u001b[90m 63 |\u001b[39m     \u001b[90m// Switch to \"Accounting\" tab and verify it is selected\u001b[39m\n \u001b[90m 64 |\u001b[39m     \u001b[36mawait\u001b[39m mentorFiltersPage\u001b[33m.\u001b[39mselectAccountingTab()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\mentorFilters.spec.js:61:62\u001b[22m"
-                        }
-                      ],
-                      "stdout": [
-                        {
-                          "text": "tasnivasumibd@gmail.com\n"
-                        },
-                        {
-                          "text": "Testdata@123\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2024-12-22T06:27:41.945Z",
-                      "attachments": [],
-                      "errorLocation": {
-                        "file": "D:\\Drive Code\\QA Harbor\\Automaiton\\intellex-academic-core-Automaiton\\tests\\mentee\\mentorFilters.spec.js",
-                        "column": 62,
-                        "line": 61
-                      }
-                    }
-                  ],
+                  "results": [],
                   "status": "skipped"
                 }
               ],
@@ -566,34 +1053,58 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 4,
-                      "status": "passed",
-                      "duration": 35535,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "https://intellex-academic-core.vercel.app/portal/profile/\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2024-12-22T06:27:34.822Z",
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
               "id": "ff9a3809ac12c2beb3eb-66333e06c7a7f76e650a",
               "file": "mentee/profile.spec.js",
-              "line": 27,
+              "line": 30,
+              "column": 9
+            },
+            {
+              "title": "Mentee Successfully update profile picture",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ff9a3809ac12c2beb3eb-604e50ed4136fd9cbfee",
+              "file": "mentee/profile.spec.js",
+              "line": 43,
+              "column": 9
+            },
+            {
+              "title": "Mentee Successfully changed password",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ff9a3809ac12c2beb3eb-90fe225edae72b977206",
+              "file": "mentee/profile.spec.js",
+              "line": 49,
               "column": 9
             },
             {
@@ -602,37 +1113,18 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 4,
-                      "status": "passed",
-                      "duration": 28190,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "https://intellex-academic-core.vercel.app/portal/profile/\n"
-                        },
-                        {
-                          "text": "I love Bangladesh and learning new technologies.\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2024-12-22T06:28:10.667Z",
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
               "id": "ff9a3809ac12c2beb3eb-a1bb389be41316822bbc",
               "file": "mentee/profile.spec.js",
-              "line": 43,
+              "line": 58,
               "column": 9
             },
             {
@@ -641,37 +1133,38 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 200000,
+                  "timeout": 20000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
-                  "results": [
-                    {
-                      "workerIndex": 4,
-                      "status": "passed",
-                      "duration": 24049,
-                      "errors": [],
-                      "stdout": [
-                        {
-                          "text": "https://intellex-academic-core.vercel.app/portal/profile/\n"
-                        },
-                        {
-                          "text": "I love Bangladesh and learning new technologies.\n"
-                        }
-                      ],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2024-12-22T06:28:38.875Z",
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
+                  "results": [],
+                  "status": "skipped"
                 }
               ],
               "id": "ff9a3809ac12c2beb3eb-89633ce356f41acd9508",
               "file": "mentee/profile.spec.js",
-              "line": 56,
+              "line": 71,
+              "column": 9
+            },
+            {
+              "title": "Mentee Successfully Update Preferences",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 20000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "ff9a3809ac12c2beb3eb-7927b62420f54cab1569",
+              "file": "mentee/profile.spec.js",
+              "line": 79,
               "column": 9
             }
           ]
@@ -681,11 +1174,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2024-12-22T06:26:39.184Z",
-    "duration": 248611.09699999998,
-    "expected": 11,
-    "skipped": 1,
-    "unexpected": 1,
+    "startTime": "2024-12-22T11:25:41.242Z",
+    "duration": 63597.205,
+    "expected": 3,
+    "skipped": 12,
+    "unexpected": 12,
     "flaky": 0
   }
 }

@@ -12,10 +12,17 @@
   "description": "",
   "devDependencies": {
     "@babel/register": "^7.25.9",
-    "@playwright/test": "^1.49.0",
-    "babel-plugin-module-resolver": "^5.0.2"
+    "@playwright/test": "^1.49.1",
+    "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.0.7",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "module-alias": "^2.2.2"
   },
   "dependencies": {
     "dotenv": "^16.4.7"
+  },
+  "_moduleAliases": {
+    "@page-objects": "./page-objects",
+    "@fixtures": "./tests/fixtures"
   }
 }
