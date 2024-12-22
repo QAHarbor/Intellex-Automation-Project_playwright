@@ -1,6 +1,3 @@
-Great! Here's the updated version of your README, with the clarification that running all tests is done using `npx playwright test`, and running a specific test suite (like `HomePage.spec.js`) is done with a dedicated command.
-
-```markdown
 # IntellEx Academic Testing Framework
 
 ## Overview
