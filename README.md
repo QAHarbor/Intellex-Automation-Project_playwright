@@ -23,30 +23,10 @@ npm install
 npm playwright install
 ```
 ### For an easier approach, if you have Visual Studio Code installed, just follow these steps:
-Cloning the GitHub Repository in VS Code
-a) Install VS Code and GitHub Extension
-Open Visual Studio Code (VS Code).
-Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side or pressing Ctrl+Shift+X (Windows/Linux) or Cmd+Shift+X (Mac).
-Search for GitHub and install the official GitHub Extension.
-b) Open the Command Palette
-Go to the top menu and click View > Command Palette.
-Alternatively, use the shortcut Ctrl+Shift+P (Windows/Linux) or Cmd+Shift+P (Mac).
-c) Clone the Repository
-Type Git: Clone in the Command Palette search box and select the Git: Clone option.
-Paste the desired GitHub project link (e.g., https://github.com/QAHarbor/Intellex-Automation-Project_playwright.git) into the prompt and press Enter.
-Choose the folder where you want to save the project locally.
-d) Open the Cloned Project
-Once the cloning process finishes, click Open to open the project in VS Code.
-e) Install Playwright
-Open the integrated terminal in VS Code by going to View > Terminal or pressing Ctrl+ (Windows/Linux) or Cmd+ (Mac).
+### Steps to Clone the Repository and Set Up the Project 1. 
 
-Run the following command to install Playwright:
+**Install VS Code and GitHub Extension** - Open Visual Studio Code (VS Code). - Go to the Extensions view by clicking on the Extensions icon in the Activity Bar or pressing `Ctrl+Shift+X` (Windows/Linux) or `Cmd+Shift+X` (Mac). - Search for **GitHub** and install the official GitHub Extension. 2. **Open the Command Palette** - Go to the top menu and click **View > Command Palette**. - Alternatively, use the shortcut `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac). 3. **Clone the Repository** - Type `Git: Clone` in the Command Palette search box and select the **Git: Clone** option. - Paste the desired GitHub project link (e.g., `https://github.com/your-username/your-repo-name.git`) into the prompt and press **Enter**. - Choose the folder where you want to save the project locally. 4. **Open the Cloned Project** - Once the cloning process finishes, click **Open** to open the project in VS Code. 5. **Install Playwright** - Open the integrated terminal in VS Code by going to **View > Terminal** or pressing `Ctrl+` (Windows/Linux) or `Cmd+` (Mac). - Run the following command to install Playwright: ```bash npm install playwright
 
-```bash
-npm install playwright
-```
-
----
 
 
 
