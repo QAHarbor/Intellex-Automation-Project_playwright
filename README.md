@@ -12,7 +12,7 @@ Ensure **Node.js** is installed:
 ```bash
 node -v
 ```
-If not installed, download it from [Node.js](https://nodejs.org/).
+If not installed, download it from [Node.js](https://nodejs.org/)
 
 ### 2. Clone the Repository and Install Dependencies
 Clone the project and install the required dependencies:
@@ -20,12 +20,41 @@ Clone the project and install the required dependencies:
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 npm install
+npm playwright install
 ```
+### For an easier approach, if you have Visual Studio Code installed, just follow these steps:
+Cloning the GitHub Repository in VS Code
+a) Install VS Code and GitHub Extension
+Open Visual Studio Code (VS Code).
+Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side or pressing Ctrl+Shift+X (Windows/Linux) or Cmd+Shift+X (Mac).
+Search for GitHub and install the official GitHub Extension.
+b) Open the Command Palette
+Go to the top menu and click View > Command Palette.
+Alternatively, use the shortcut Ctrl+Shift+P (Windows/Linux) or Cmd+Shift+P (Mac).
+c) Clone the Repository
+Type Git: Clone in the Command Palette search box and select the Git: Clone option.
+Paste the desired GitHub project link (e.g., https://github.com/QAHarbor/Intellex-Automation-Project_playwright.git) into the prompt and press Enter.
+Choose the folder where you want to save the project locally.
+d) Open the Cloned Project
+Once the cloning process finishes, click Open to open the project in VS Code.
+e) Install Playwright
+Open the integrated terminal in VS Code by going to View > Terminal or pressing Ctrl+ (Windows/Linux) or Cmd+ (Mac).
+
+Run the following command to install Playwright:
+
+```bash
+npm install playwright
+```
+
+---
+
+
 
 ### 3. Install Allure Commandline (Optional)
 To generate Allure reports, install the Allure command line:
 ```bash
 npm install -g allure-commandline --save-dev
+npm install allure-playwright --save-dev
 ```
 
 ---
